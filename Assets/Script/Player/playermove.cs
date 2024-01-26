@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class playermove : MonoBehaviour
 {
-    public float movespeed;
-    private float speedX, speedY;
+    public float movespeed = 5;
+    public float rotationSpeed = 180f;
     private Rigidbody2D rb;         
     
     // Start is called before the first frame update
@@ -18,37 +18,50 @@ public class playermove : MonoBehaviour
     void Update()
     {
         {
+            // Get input values for W, A, S, D keys
+            float horizontalInput = 0f;
+            float verticalInput = 0f;
 
             if (Input.GetKey(KeyCode.W))
             {
-                speedY = 1 * movespeed;
+                verticalInput = 1f;
             }
-            else if (Input.GetKey(KeyCode.S))
+
+            if (Input.GetKey(KeyCode.A))
             {
-                speedY = -1 * movespeed;
+                horizontalInput = -1f;
             }
-            else if (Input.GetKey(KeyCode.D))
+
+            if (Input.GetKey(KeyCode.S))
             {
-                speedX = 1 * movespeed;
+                verticalInput = -1f;
             }
-            else if (Input.GetKey(KeyCode.A))
+
+            if (Input.GetKey(KeyCode.D))
             {
-                speedX = -1 * movespeed;
+                horizontalInput = 1f;
             }
-            else
-            {
-                speedY = 0 * movespeed;
-                speedX = 0 * movespeed;
-            }
+
+            // Calculate the movement direction
+            Vector3 movement = new Vector3(horizontalInput, verticalInput, 0f);
+
+            // Normalize the movement vector to ensure consistent speed in all directions
+            movement.Normalize();
+
+            // Update the player's position based on input and speed
+            transform.Translate(movement * movespeed * Time.deltaTime);
         }
+
+        if (Input.GetKey(KeyCode.C))
         {
-            
-            
+            transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
         }
-        rb.velocity = new Vector2(speedX, speedY);
-        
-        
-        
+        if (Input.GetKey(KeyCode.V))
+        {
+            transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
+        }
+
+
     }
     
 }
