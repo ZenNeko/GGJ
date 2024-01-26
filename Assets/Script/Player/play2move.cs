@@ -7,10 +7,25 @@ public class play2move : MonoBehaviour
     public float movespeed = 5;
     public float rotationSpeed = 180f;
     private Rigidbody2D rb;   
+    
+    
+    public Transform ballSpawnPoint;
+    public GameObject ballPrefab;
+    public float ballSpeed = 2000f;
     // Start is called before the first frame update
+    
+    void Shoot()
+    {
+        if (Input.GetKeyDown(KeyCode.Slash))
+        {
+            var shootBall = Instantiate(ballPrefab, ballSpawnPoint.position, ballSpawnPoint.rotation);
+            shootBall.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint.up * ballSpeed;
+        }
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+       
     }
 
     // Update is called once per frame
@@ -59,7 +74,10 @@ public class play2move : MonoBehaviour
         {
             transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
         }
+        
+        Shoot();
 
 
     }
+    
 }
