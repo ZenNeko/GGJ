@@ -7,14 +7,19 @@ public class PlayerShoot : MonoBehaviour
 {
     public Transform ballSpawnPoint;
     public GameObject ballPrefab;
-    public float ballSpeed = 10f;
+    public float ballSpeed = 2000f;
 
     private void Update()
     {
+        Shoot();
+    }
+
+    void Shoot()
+    {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            var ball = Instantiate(ballPrefab, ballSpawnPoint.position, ballSpawnPoint.rotation);
-            ball.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint.up * ballSpeed;
+            var shootBall = Instantiate(ballPrefab, ballSpawnPoint.position, ballSpawnPoint.rotation);
+            shootBall.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint.up * ballSpeed;
         }
     }
 }

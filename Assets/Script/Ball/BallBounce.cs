@@ -8,7 +8,7 @@ public class BallBounce : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 lVelo;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }

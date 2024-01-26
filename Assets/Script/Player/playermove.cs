@@ -6,7 +6,8 @@ public class playermove : MonoBehaviour
 {
     public float movespeed = 5;
     public float rotationSpeed = 180f;
-    private Rigidbody2D rb;         
+    private Rigidbody2D rb;    
+   
     
     // Start is called before the first frame update
     void Start()
@@ -61,7 +62,10 @@ public class playermove : MonoBehaviour
             transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
         }
 
-
+        
+        
     }
+    
+    
     
 }
