@@ -1,0 +1,27 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BallBounce : MonoBehaviour
+{
+    private Rigidbody2D rb;
+    private Vector3 lVelo;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        lVelo = rb.velocity;
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        var speed = lVelo.magnitude;
+        var direction = Vector3.Reflect(lVelo.normalized, col.contacts[0].normal);
+        rb.velocity = direction * Mathf.Max(speed,0f);
+    }
+}
