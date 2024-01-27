@@ -43,7 +43,7 @@ public class play2move : MonoBehaviour
 
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                horizontalInput = -1f;
+                horizontalInput = 1f;
             }
 
             if (Input.GetKey(KeyCode.DownArrow))
@@ -53,7 +53,7 @@ public class play2move : MonoBehaviour
 
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                horizontalInput = 1f;
+                horizontalInput = -1f;
             }
 
             // Calculate the movement direction
