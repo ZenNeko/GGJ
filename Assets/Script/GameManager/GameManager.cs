@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static bool gameEnd;
-    private float Time = 120f;
+    private Time time;
     public GameObject overScreen;
+    public GameObject powerUp1prefab;
     private void Awake()
     {
         gameEnd = false;
@@ -23,6 +24,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.deltaTime % 10 == 0)
+        {
+            var spawnPower1 = Instantiate(powerUp1prefab,)
+        }
         if (gameEnd)
         {
             overScreen.SetActive(true);

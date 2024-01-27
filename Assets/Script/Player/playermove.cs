@@ -4,9 +4,23 @@ using UnityEngine;
 
 public class playermove : MonoBehaviour
 {
+    private int powerMode = 0;
     public float movespeed = 5;
     public float rotationSpeed = 180f;
+
+    private SpriteRenderer rend;
+    public Color powerMode0Color;
+    public Color powerMode1Color;
+    
+    public Transform ballSpawnPoint;
+    public Transform ballSpawnPoint2;
+    public Transform ballSpawnPoint3;
+    public GameObject ballPrefab;
+    public float ballSpeed = 20f;
+    [SerializeField] private AudioSource shootBallSound;
+    
     private Rigidbody2D rb;
+    
     [SerializeField] private AudioSource walkSound;
 
     void Move()
@@ -71,15 +85,66 @@ public class playermove : MonoBehaviour
         }
     }
     
+    void Shoot()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (powerMode == 0)
+            {
+                shootBallSound.Play();
+                var shootBall = Instantiate(ballPrefab, ballSpawnPoint.position, ballSpawnPoint.rotation);
+                shootBall.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint.up * ballSpeed;
+            }
+
+            if (powerMode == 1)
+            {
+                shootBallSound.Play();
+                var shootBall = Instantiate(ballPrefab, ballSpawnPoint.position, ballSpawnPoint.rotation);
+                var shootBall2 = Instantiate(ballPrefab, ballSpawnPoint2.position, ballSpawnPoint2.rotation);
+                var shootBall3 = Instantiate(ballPrefab, ballSpawnPoint3.position, ballSpawnPoint3.rotation);
+                shootBall.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint.up * ballSpeed;
+                shootBall2.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint2.up * ballSpeed;
+                shootBall3.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint3.up * ballSpeed;
+                powerMode = 0;
+            }
+        }
+    }
+    void ChangeColor()
+    {
+        if (powerMode == 0)
+        {
+            rend.color = powerMode0Color;
+            ballSpawnPoint2.gameObject.SetActive(false);
+            ballSpawnPoint3.gameObject.SetActive(false);
+        }
+        if (powerMode == 1)
+        {
+            rend.color = powerMode1Color;
+            ballSpawnPoint2.gameObject.SetActive(true);
+            ballSpawnPoint3.gameObject.SetActive(true);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.name == "TripleBall")
+        {
+            powerMode = 1;
+            Destroy(other.gameObject);
+        }
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rend = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Move(); Rotate();
+        Shoot();
+        ChangeColor();
     }
 }

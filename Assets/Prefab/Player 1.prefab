@@ -180,7 +180,6 @@ GameObject:
   - component: {fileID: 6308289466386005783}
   - component: {fileID: 6308289466386005768}
   - component: {fileID: 6308289466386005769}
-  - component: {fileID: 6308289466386005781}
   - component: {fileID: 1925793059307101732}
   - component: {fileID: -8037451858244224430}
   - component: {fileID: 255780293713864802}
@@ -275,6 +274,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movespeed: 8
   rotationSpeed: 180
+  powerMode0Color: {r: 1, g: 1, b: 1, a: 1}
+  powerMode1Color: {r: 1, g: 0, b: 0, a: 0.8392157}
+  ballSpawnPoint: {fileID: 6308289465661274706}
+  ballSpawnPoint2: {fileID: 1018483234239767013}
+  ballSpawnPoint3: {fileID: 9194555733802304871}
+  ballPrefab: {fileID: 6099232397070126325, guid: 536b8fea35cf1a049a86a2b19b8d114e, type: 3}
+  ballSpeed: 20
+  shootBallSound: {fileID: 255780293713864802}
   walkSound: {fileID: -8037451858244224430}
 --- !u!50 &6308289466386005769
 Rigidbody2D:
@@ -297,22 +304,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6308289466386005781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6308289466386005771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f40735e53a90e86438c9bea720a5d194, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballSpawnPoint: {fileID: 6308289465661274706}
-  ballPrefab: {fileID: 6099232397070126325, guid: 536b8fea35cf1a049a86a2b19b8d114e, type: 3}
-  ballSpeed: 20
-  shootBallSound: {fileID: 255780293713864802}
 --- !u!70 &1925793059307101732
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
