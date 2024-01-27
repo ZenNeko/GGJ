@@ -42,3 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 3026905719
+    locked: 0
+  - name: play
+    uniqueID: 3052789845
+    locked: 0
