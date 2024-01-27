@@ -11,24 +11,42 @@ public class DestroyPlayer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            HealthManager.health--;
-            Debug.Log("Hit");
-            if (HealthManager.health <= 0)
+            if (other.gameObject.name == "Player 1")
             {
-                GameManager.gameEnd = true;
-                gameObject.SetActive(false);
+                HealthManager.health--;
+                Debug.Log("Hit");
+                if (HealthManager.health <= 0)
+                {
+                    GameManager.gameEnd = true;
+                    gameObject.SetActive(false);
+                }
+                else
+                {
+                    StartCoroutine(GetHurt());
+                }
             }
-            else
+            if (other.gameObject.name == "Player 2")
             {
-                StartCoroutine(GetHurt());
+                HealthManager.health2--;
+                Debug.Log("Hit");
+                if (HealthManager.health2 <= 0)
+                {
+                    GameManager.gameEnd = true;
+                    gameObject.SetActive(false);
+                }
+                else
+                {
+                    StartCoroutine(GetHurt());
+                }
             }
         }
+        
     }
-    
     IEnumerator GetHurt()
     {
         Physics2D.IgnoreLayerCollision(3,6);
         yield return new WaitForSeconds(3);
         Physics2D.IgnoreLayerCollision(3,6, false);
     }
+    
 }
