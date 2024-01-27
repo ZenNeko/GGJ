@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DestroyPlayer : MonoBehaviour
 {
@@ -9,7 +10,13 @@ public class DestroyPlayer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Hit!!");
+            HealthManager.health--;
+            if (HealthManager.health <= 0)
+            {
+                GameManager.gameEnd = true;
+                gameObject.SetActive(false);
+            }
         }
     }
+    
 }
