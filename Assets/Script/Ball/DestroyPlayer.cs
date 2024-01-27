@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class DestroyPlayer : MonoBehaviour
 {
+    [SerializeField] private AudioSource hurtEffect;
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -14,6 +15,7 @@ public class DestroyPlayer : MonoBehaviour
             if (other.gameObject.name == "Player 1")
             {
                 HealthManager.health--;
+                hurtEffect.Play();
                 Debug.Log("Hit");
                 if (HealthManager.health <= 0)
                 {
@@ -28,6 +30,7 @@ public class DestroyPlayer : MonoBehaviour
             if (other.gameObject.name == "Player 2")
             {
                 HealthManager.health2--;
+                hurtEffect.Play();
                 Debug.Log("Hit");
                 if (HealthManager.health2 <= 0)
                 {

@@ -6,22 +6,27 @@ public class playermove : MonoBehaviour
 {
     public float movespeed = 5;
     public float rotationSpeed = 180f;
-    private Rigidbody2D rb;    
-   
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    private Rigidbody2D rb;
+    [SerializeField] private AudioSource walkSound;
 
-    // Update is called once per frame
-    void Update()
+    void Move()
     {
         {
             // Get input values for W, A, S, D keys
             float horizontalInput = 0f;
             float verticalInput = 0f;
+
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) ||
+                Input.GetKeyDown(KeyCode.S))
+            {
+                walkSound.Play();
+            }
+            
+            if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) ||
+                Input.GetKeyUp(KeyCode.S))
+            {
+                walkSound.Stop();
+            }
 
             if (Input.GetKey(KeyCode.W))
             {
@@ -52,7 +57,10 @@ public class playermove : MonoBehaviour
             // Update the player's position based on input and speed
             transform.Translate(movement * movespeed * Time.deltaTime);
         }
+    }
 
+    void Rotate()
+    {
         if (Input.GetKey(KeyCode.C))
         {
             transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
@@ -61,11 +69,17 @@ public class playermove : MonoBehaviour
         {
             transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
         }
-
-        
-        
     }
     
-    
-    
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Move(); Rotate();
+    }
 }

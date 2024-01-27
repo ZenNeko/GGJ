@@ -8,7 +8,7 @@ public class PlayerShoot : MonoBehaviour
     public Transform ballSpawnPoint;
     public GameObject ballPrefab;
     public float ballSpeed = 20f;
-
+    [SerializeField] private AudioSource shootBallSound;
     private void Update()
     {
         Shoot();
@@ -18,6 +18,7 @@ public class PlayerShoot : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
+            shootBallSound.Play();
             var shootBall = Instantiate(ballPrefab, ballSpawnPoint.position, ballSpawnPoint.rotation);
             shootBall.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint.up * ballSpeed;
         }

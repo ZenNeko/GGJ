@@ -13,14 +13,8 @@ public class HealthManager : MonoBehaviour
 
     public Sprite fullHeart;
     public Sprite emptyHeart;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    void ShowHpP1()
     {
         foreach (Image img in hp)
         {
@@ -31,6 +25,10 @@ public class HealthManager : MonoBehaviour
         {
             hp[i].sprite = fullHeart;
         }
+    }
+
+    void ShowHpP2()
+    {
         foreach (Image img2 in hp2)
         {
             img2.sprite = emptyHeart;
@@ -40,5 +38,17 @@ public class HealthManager : MonoBehaviour
         {
             hp2[i].sprite = fullHeart;
         }
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        ShowHpP1();
+        ShowHpP2();
     }
 }
