@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private float Time = 120f;
     public GameObject  play1;
     public GameObject  play2;
+    public GameObject overScreen;
     private void Awake()
     {
         gameEnd = false;
@@ -31,6 +32,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameEnd)
+        {
+            overScreen.SetActive(true);
+        }
     }
 }

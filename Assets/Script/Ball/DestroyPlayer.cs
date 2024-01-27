@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,7 +17,17 @@ public class DestroyPlayer : MonoBehaviour
                 GameManager.gameEnd = true;
                 gameObject.SetActive(false);
             }
+            else
+            {
+                StartCoroutine(GetHurt());
+            }
         }
     }
     
+    IEnumerator GetHurt()
+    {
+        Physics2D.IgnoreLayerCollision(3,6);
+        yield return new WaitForSeconds(3);
+        Physics2D.IgnoreLayerCollision(3,6, false);
+    }
 }
