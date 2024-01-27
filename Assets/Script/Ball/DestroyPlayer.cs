@@ -12,6 +12,7 @@ public class DestroyPlayer : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             HealthManager.health--;
+            Debug.Log("Hit");
             if (HealthManager.health <= 0)
             {
                 GameManager.gameEnd = true;
