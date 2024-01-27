@@ -1,13 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private int PlayerHP = 3;
+    public static bool gameEnd;
 
-    private float Time = 120f;
-    
+    private void Awake()
+    {
+        gameEnd = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

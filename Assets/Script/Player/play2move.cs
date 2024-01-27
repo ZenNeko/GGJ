@@ -11,7 +11,7 @@ public class play2move : MonoBehaviour
     
     public Transform ballSpawnPoint;
     public GameObject ballPrefab;
-    public float ballSpeed = 2000f;
+    public float ballSpeed = 20f;
     // Start is called before the first frame update
     
     void Shoot()
