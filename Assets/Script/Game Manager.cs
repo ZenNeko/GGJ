@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gamemaneger : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     private int PlayerHP = 3;
 
