@@ -32,5 +32,7 @@ public class GameManager : MonoBehaviour
     public void Replay()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        HealthManager.health = 3;
+        HealthManager.health2 = 3;
     }
 }
