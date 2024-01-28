@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class playermove : MonoBehaviour
 {
-    private int powerMode = 0;
+    private int powerMode;
     public float movespeed = 5;
     public float rotationSpeed = 180f;
 
@@ -16,7 +16,8 @@ public class playermove : MonoBehaviour
     public Transform ballSpawnPoint2;
     public Transform ballSpawnPoint3;
     public GameObject ballPrefab;
-    public float ballSpeed = 20f;
+    public GameObject ballFastPrefab;
+    public float ballSpeed = 50f;
     [SerializeField] private AudioSource shootBallSound;
     
     private Rigidbody2D rb;
@@ -107,6 +108,14 @@ public class playermove : MonoBehaviour
                 shootBall3.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint3.up * ballSpeed;
                 powerMode = 0;
             }
+
+            if (powerMode == 2)
+            {
+                shootBallSound.Play();
+                var shootBall = Instantiate(ballFastPrefab, ballSpawnPoint.position, ballSpawnPoint.rotation);
+                shootBall.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint.up * ballSpeed * 5;
+                powerMode = 0;
+            }
         }
     }
     void ChangeColor()
@@ -123,12 +132,23 @@ public class playermove : MonoBehaviour
             ballSpawnPoint2.gameObject.SetActive(true);
             ballSpawnPoint3.gameObject.SetActive(true);
         }
+        if (powerMode == 2)
+        {
+            rend.color = Color.yellow;
+            ballSpawnPoint2.gameObject.SetActive(false);
+            ballSpawnPoint3.gameObject.SetActive(false);
+        }
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.name == "TripleBall")
         {
             powerMode = 1;
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.name == "SpeedBall")
+        {
+            powerMode = 2;
             Destroy(other.gameObject);
         }
     }
@@ -138,6 +158,7 @@ public class playermove : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rend = GetComponent<SpriteRenderer>();
+        powerMode = 0;
     }
 
     // Update is called once per frame

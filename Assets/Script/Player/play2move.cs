@@ -18,8 +18,9 @@ public class play2move : MonoBehaviour
     public Transform ballSpawnPoint2;
     public Transform ballSpawnPoint3;
     public GameObject ballPrefab;
-    public float ballSpeed = 20f;
-    private int powerMode = 0;
+    public GameObject ballFastPrefab;
+    public float ballSpeed = 50f;
+    private int powerMode;
     // Start is called before the first frame update
     
     void Shoot()
@@ -44,6 +45,13 @@ public class play2move : MonoBehaviour
                 shootBall3.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint3.up * ballSpeed;
                 powerMode = 0;
             }
+            if (powerMode == 2)
+            {
+                shootBallSound.Play();
+                var shootBall = Instantiate(ballFastPrefab, ballSpawnPoint.position, ballSpawnPoint.rotation);
+                shootBall.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint.up * ballSpeed * 5;
+                powerMode = 0;
+            }
         }
     }
 
@@ -58,6 +66,12 @@ public class play2move : MonoBehaviour
         if (powerMode == 1)
         {
             rend.color = powerMode1Color;
+            ballSpawnPoint2.gameObject.SetActive(true);
+            ballSpawnPoint3.gameObject.SetActive(true);
+        }
+        if (powerMode == 2)
+        {
+            rend.color = Color.yellow;
             ballSpawnPoint2.gameObject.SetActive(true);
             ballSpawnPoint3.gameObject.SetActive(true);
         }
@@ -127,12 +141,19 @@ public class play2move : MonoBehaviour
             powerMode = 1;
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.name == "SpeedBall")
+        {
+            powerMode = 2;
+            Destroy(other.gameObject);
+        }
     }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rend = GetComponent<SpriteRenderer>();
+        powerMode = 0;
     }
 
     // Update is called once per frame
