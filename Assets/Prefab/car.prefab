@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 932037536082867549}
   - component: {fileID: 932037536082867548}
   - component: {fileID: 932037536082867544}
-  - component: {fileID: 1397476416181529233}
   - component: {fileID: 8043520915981401721}
-  - component: {fileID: 5723546175245113376}
-  m_Layer: 3
+  - component: {fileID: -8791935328903261490}
+  m_Layer: 6
   m_Name: car
   m_TagString: Car
   m_Icon: {fileID: 0}
@@ -151,19 +150,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &1397476416181529233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 932037536082867555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbf58dc0d5e705a448897094645f44e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hurtEffect: {fileID: 8043520915981401721}
 --- !u!82 &8043520915981401721
 AudioSource:
   m_ObjectHideFlags: 0
@@ -260,7 +246,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5723546175245113376
+--- !u!114 &-8791935328903261490
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -269,7 +255,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 932037536082867555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd30ef8b3267d245b751d9aa90b56e1, type: 3}
+  m_Script: {fileID: 11500000, guid: cbf58dc0d5e705a448897094645f44e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hurtEffect: {fileID: 8043520915981401721}
