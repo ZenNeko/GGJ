@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 240373308380395698}
   - component: {fileID: 240373308380395708}
   - component: {fileID: 8053737369776599313}
-  m_Layer: 0
+  - component: {fileID: 4630041021502261513}
+  m_Layer: 3
   m_Name: TripleBall
   m_TagString: Power
   m_Icon: {fileID: 0}
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1242177451
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f86438e0c3aa46c4195f317e034d0c2f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -126,3 +127,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movespeed: 25
   rotationSpeed: 180
+--- !u!50 &4630041021502261513
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240373308380395699}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class play2move : MonoBehaviour
 {
+    private int powerMode;
     public float moveSpeed = 5;
     public float rotationSpeed = 180f;
     private Rigidbody2D rb;   
@@ -20,7 +21,7 @@ public class play2move : MonoBehaviour
     public GameObject ballPrefab;
     public GameObject ballFastPrefab;
     public float ballSpeed = 50f;
-    private int powerMode;
+    
     
     public float shootCooldown = 0.5f; 
     private float shootCooldownTimer = 0f;
@@ -177,7 +178,6 @@ public class play2move : MonoBehaviour
         }
         Move(); Rotate();
         ChangeColor();
-        Move(); Rotate(); 
-        ChangeColor();
+        
     }
 }

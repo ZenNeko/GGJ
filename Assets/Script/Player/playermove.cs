@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,8 @@ public class playermove : MonoBehaviour
     private int powerMode;
     public float movespeed = 5;
     public float rotationSpeed = 180f;
-
+    private Rigidbody2D rb;
+    
     private SpriteRenderer rend;
     public Color powerMode0Color;
     public Color powerMode1Color;
@@ -22,14 +24,8 @@ public class playermove : MonoBehaviour
     public float shootCooldown = 0.5f; 
     private float shootCooldownTimer = 0f;
     
-   
-    
-    
     
     [SerializeField] private AudioSource shootBallSound;
-    
-    private Rigidbody2D rb;
-    
     [SerializeField] private AudioSource walkSound;
 
     void Move()
@@ -187,10 +183,9 @@ public class playermove : MonoBehaviour
         {
             shootCooldownTimer -= Time.deltaTime;
         }
-        
-      
         Move(); Rotate();
         ChangeColor();
+        
         
         
     }
