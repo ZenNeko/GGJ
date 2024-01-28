@@ -6,8 +6,9 @@ TagManager:
   tags:
   - Ball
   - wall
-  - Power
+  - Undefined
   - Speed
+  - Power
   layers:
   - Default
   - TransparentFX
