@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 240373308380395708}
   - component: {fileID: 8053737369776599313}
   m_Layer: 0
-  m_Name: TripleBall
+  m_Name: TripleBall up
   m_TagString: Power
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,5 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0a81e504668dd4aadc91b762f1152a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 25
+  movespeed: -25
   rotationSpeed: 180

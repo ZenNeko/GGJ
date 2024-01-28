@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private Time time;
     public GameObject overScreen;
     public GameObject powerUp1prefab;
+    
     private void Awake()
     {
         gameEnd = false;
@@ -28,6 +29,8 @@ public class GameManager : MonoBehaviour
         {
             overScreen.SetActive(true);
         }
+        
+
     }
 
     public void Replay()

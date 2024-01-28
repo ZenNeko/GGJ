@@ -18,6 +18,14 @@ public class playermove : MonoBehaviour
     public GameObject ballPrefab;
     public GameObject ballFastPrefab;
     public float ballSpeed = 50f;
+    
+    public float shootCooldown = 0.5f; 
+    private float shootCooldownTimer = 0f;
+    
+   
+    
+    
+    
     [SerializeField] private AudioSource shootBallSound;
     
     private Rigidbody2D rb;
@@ -141,15 +149,18 @@ public class playermove : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "TripleBall")
+        if (other.gameObject.CompareTag("Power"))
         {
             powerMode = 1;
             Destroy(other.gameObject);
+         
         }
-        if (other.gameObject.name == "SpeedBall")
+
+        if (other.gameObject.CompareTag("Speed"))
         {
             powerMode = 2;
             Destroy(other.gameObject);
+     
         }
     }
     
@@ -164,8 +175,23 @@ public class playermove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.B) && shootCooldownTimer <= 0f)
+        {
+            Shoot();
+            // Reset the cooldown timer
+            shootCooldownTimer = shootCooldown;
+        }
+
+        // Update the cooldown timer
+        if (shootCooldownTimer > 0f)
+        {
+            shootCooldownTimer -= Time.deltaTime;
+        }
+        
+      
         Move(); Rotate();
-        Shoot();
         ChangeColor();
+        
+        
     }
 }

@@ -278,11 +278,12 @@ MonoBehaviour:
   shootBallSound: {fileID: 1540817229599815166}
   powerMode1Color: {r: 1, g: 0.069811285, b: 0.069811285, a: 0.8392157}
   ballSpawnPoint: {fileID: 9108434364240910453}
-  ballSpawnPoint2: {fileID: 0}
-  ballSpawnPoint3: {fileID: 0}
+  ballSpawnPoint2: {fileID: 7137462383985386983}
+  ballSpawnPoint3: {fileID: 819383216252618200}
   ballPrefab: {fileID: 6099232397070126325, guid: 536b8fea35cf1a049a86a2b19b8d114e, type: 3}
-  ballFastPrefab: {fileID: 0}
+  ballFastPrefab: {fileID: 947027220647985261, guid: 4eb21ed1a52a5c6469eaf173d6586942, type: 3}
   ballSpeed: 50
+  shootCooldown: 0.5
 --- !u!50 &9108434363995554816
 Rigidbody2D:
   serializedVersion: 4
@@ -318,7 +319,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 16, y: 6}
+  m_Size: {x: 19, y: 10}
   m_Direction: 1
 --- !u!82 &-1540361163399947815
 AudioSource:

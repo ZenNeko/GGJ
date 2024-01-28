@@ -21,6 +21,10 @@ public class play2move : MonoBehaviour
     public GameObject ballFastPrefab;
     public float ballSpeed = 50f;
     private int powerMode;
+    
+    public float shootCooldown = 0.5f; 
+    private float shootCooldownTimer = 0f;
+    
     // Start is called before the first frame update
     
     void Shoot()
@@ -40,9 +44,9 @@ public class play2move : MonoBehaviour
                 var shootBall = Instantiate(ballPrefab, ballSpawnPoint.position, ballSpawnPoint.rotation);
                 var shootBall2 = Instantiate(ballPrefab, ballSpawnPoint2.position, ballSpawnPoint2.rotation);
                 var shootBall3 = Instantiate(ballPrefab, ballSpawnPoint3.position, ballSpawnPoint3.rotation);
-                shootBall.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint.up * ballSpeed;
-                shootBall2.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint2.up * ballSpeed;
-                shootBall3.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint3.up * ballSpeed;
+                shootBall.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint.up * ballSpeed* 2;
+                shootBall2.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint2.up * ballSpeed* 2;
+                shootBall3.GetComponent<Rigidbody2D>().velocity = ballSpawnPoint3.up * ballSpeed* 2;
                 powerMode = 0;
             }
             if (powerMode == 2)
@@ -72,8 +76,8 @@ public class play2move : MonoBehaviour
         if (powerMode == 2)
         {
             rend.color = Color.yellow;
-            ballSpawnPoint2.gameObject.SetActive(true);
-            ballSpawnPoint3.gameObject.SetActive(true);
+            ballSpawnPoint2.gameObject.SetActive(false);
+            ballSpawnPoint3.gameObject.SetActive(false);
         }
     }
 
@@ -136,13 +140,13 @@ public class play2move : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "TripleBall")
+        if (other.gameObject.CompareTag("Power"))
         {
             powerMode = 1;
             Destroy(other.gameObject);
         }
 
-        if (other.gameObject.name == "SpeedBall")
+        if (other.gameObject.CompareTag("Speed"))
         {
             powerMode = 2;
             Destroy(other.gameObject);
@@ -159,7 +163,21 @@ public class play2move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move(); Rotate(); Shoot();
+        if (Input.GetKeyDown(KeyCode.Slash) && shootCooldownTimer <= 0f)
+        {
+            Shoot();
+            // Reset the cooldown timer
+            shootCooldownTimer = shootCooldown;
+        }
+
+        // Update the cooldown timer
+        if (shootCooldownTimer > 0f)
+        {
+            shootCooldownTimer -= Time.deltaTime;
+        }
+        Move(); Rotate();
+        ChangeColor();
+        Move(); Rotate(); 
         ChangeColor();
     }
 }

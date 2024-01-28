@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class spawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefabs; // Array of different enemy prefabs
     public float minSpawnInterval = 1f;
     public float maxSpawnInterval = 5f;
     public Transform spawnPoint;
@@ -12,15 +12,18 @@ public class spawner : MonoBehaviour
     void Start()
     {
         // Start spawning enemies at random intervals
-        Invoke("SpawnEnemy", Random.Range(minSpawnInterval, maxSpawnInterval));
+        Invoke("SpawnRandomEnemy", Random.Range(minSpawnInterval, maxSpawnInterval));
     }
 
-    void SpawnEnemy()
+    void SpawnRandomEnemy()
     {
-        // Instantiate an enemy at the spawn point
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+        // Select a random enemy prefab from the array
+        GameObject randomEnemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+
+        // Instantiate the selected enemy at the spawn point
+        Instantiate(randomEnemyPrefab, spawnPoint.position, Quaternion.identity);
 
         // Schedule the next spawn at a random interval
-        Invoke("SpawnEnemy", Random.Range(minSpawnInterval, maxSpawnInterval));
+        Invoke("SpawnRandomEnemy", Random.Range(minSpawnInterval, maxSpawnInterval));
     }
 }

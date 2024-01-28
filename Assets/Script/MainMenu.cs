@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private HealthManager _healthManager;
     // Start is called before the first frame update
     public void PlayGame()
     {
@@ -15,5 +16,9 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("QUIT!");
         Application.Quit();
+    }
+    public void backMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

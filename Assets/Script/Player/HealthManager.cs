@@ -39,15 +39,23 @@ public class HealthManager : MonoBehaviour
             hp2[i].sprite = fullHeart;
         }
     }
+
+    public void regaeme()
+    {   
+        health = 3;
+        health2 = 3;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        regaeme();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         ShowHpP1();
         ShowHpP2();
     }
