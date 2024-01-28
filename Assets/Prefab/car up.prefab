@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 932037536082867548}
   - component: {fileID: 932037536082867544}
   m_Layer: 3
-  m_Name: car
+  m_Name: car up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,14 +27,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932037536082867555}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: -15.1, y: 27.38, z: 0}
   m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &932037536082867550
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0a81e504668dd4aadc91b762f1152a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 40
+  movespeed: -40
   rotationSpeed: 180
 --- !u!50 &932037536082867544
 Rigidbody2D:

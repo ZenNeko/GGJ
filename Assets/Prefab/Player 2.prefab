@@ -281,7 +281,8 @@ MonoBehaviour:
   ballSpawnPoint2: {fileID: 0}
   ballSpawnPoint3: {fileID: 0}
   ballPrefab: {fileID: 6099232397070126325, guid: 536b8fea35cf1a049a86a2b19b8d114e, type: 3}
-  ballSpeed: 20
+  ballFastPrefab: {fileID: 0}
+  ballSpeed: 50
 --- !u!50 &9108434363995554816
 Rigidbody2D:
   serializedVersion: 4

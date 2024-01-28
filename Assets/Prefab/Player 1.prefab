@@ -280,7 +280,8 @@ MonoBehaviour:
   ballSpawnPoint2: {fileID: 1018483234239767013}
   ballSpawnPoint3: {fileID: 9194555733802304871}
   ballPrefab: {fileID: 6099232397070126325, guid: 536b8fea35cf1a049a86a2b19b8d114e, type: 3}
-  ballSpeed: 20
+  ballFastPrefab: {fileID: 0}
+  ballSpeed: 50
   shootBallSound: {fileID: 255780293713864802}
   walkSound: {fileID: -8037451858244224430}
 --- !u!50 &6308289466386005769
