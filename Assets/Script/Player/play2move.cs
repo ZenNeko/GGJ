@@ -19,7 +19,7 @@ public class play2move : MonoBehaviour
     public Transform ballSpawnPoint3;
     public GameObject ballPrefab;
     public GameObject ballFastPrefab;
-    public float ballSpeed = 50f;
+    public float ballSpeed = 75f;
     private int powerMode;
     
     public float shootCooldown = 0.5f; 

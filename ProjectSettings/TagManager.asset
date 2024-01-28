@@ -9,6 +9,7 @@ TagManager:
   - Undefined
   - Speed
   - Power
+  - Car
   layers:
   - Default
   - TransparentFX
