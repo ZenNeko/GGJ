@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ball Test.unity
     guid: c1f8e3efd495bc54a92ebcef793c87de
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: d8ba3d5ca79e04e459d33255440446c0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
