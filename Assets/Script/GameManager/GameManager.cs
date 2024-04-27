@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     private Time time;
     public GameObject overScreen;
     public GameObject powerUp1prefab;
+    public GameObject player1Win;
+    public GameObject player2Win;
     
     private void Awake()
     {
@@ -28,6 +30,17 @@ public class GameManager : MonoBehaviour
         if (gameEnd)
         {
             overScreen.SetActive(true);
+            if (HealthManager.health <= 0)
+            {
+                player2Win.SetActive(true);
+                player1Win.SetActive(false);
+            }
+            if (HealthManager.health2 <= 0)
+            {
+                player1Win.SetActive(true);
+                player2Win.SetActive(false);
+            }
+            Time.timeScale = 0;
         }
         
 
